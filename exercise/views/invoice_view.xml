@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- action and menu overwrite thay xpath na apvano hoy -->
+    <record id="account.action_move_out_invoice_type" model="ir.actions.act_window">
+        <field name="context">{'search_default_myinvoices':1}</field>
+    </record>
+</odoo>

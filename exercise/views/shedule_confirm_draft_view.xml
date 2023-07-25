@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+      <!-- shedule -->
+      <record id="ir_cron_confirm_draft_action" model="ir.cron">
+          <field name="name">Shedule confirm draft</field>
+          <field name="model_id" ref="model_sale_order"/>
+          <field name="state">code</field>
+          <field name="code">model.confirm_order()</field>
+          <field name="user_id" ref="base.user_root"/>
+          <field name="interval_number">1</field>
+          <field name="interval_type">minutes</field>
+          <field name="numbercall">-1</field>
+      </record>
+
+
+      <!-- report -->
+      <template id="sales_order_report"  inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@id='informations']" position="after">
+                <t t-set="display_tax" t-value="any(l.tax_id for l in doc.order_line)"/>
+                <!-- you can use to access model field -->
+            </xpath>
+            <xpath expr="//th[@name='th_taxes']" position="attributes">
+                <attribute name="t-if">display_tax</attribute>
+            </xpath>
+            <xpath expr="//td[@name='td_taxes']" position="attributes">
+                <attribute name="t-if">display_tax</attribute>
+            </xpath>
+      </template>
+   </data>
+</odoo>

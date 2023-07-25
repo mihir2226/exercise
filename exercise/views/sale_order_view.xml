@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherited_sale_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="context">{'res_partner_search_mode': 'customer','show_address': 1,'show_email': 1}</attribute>
+                </xpath>
+                    
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <xpath expr="//field[@name='tag_ids']" position="move"/>
+                </xpath>
+
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="service_total"/>
+                </xpath>
+
+                
+                <field name="fiscal_position_id" position="before">
+                    <field name="in_company_id" invisible="1"/>
+                </field>
+
+                <field name="fiscal_position_id" position="replace">
+                    <field name="fiscal_position_id" attrs="{'required':[('in_company_id','=',True)]}"/>
+                </field>
+        </field>
+    </record>
+</odoo>
+
+<!-- position: before,after,replace,move,inside -->
+<!-- sale order report mathi tax field hide karvi -->
