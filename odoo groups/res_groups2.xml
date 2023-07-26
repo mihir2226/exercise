@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- we have to create category -->
+	<record model="ir.module.category" id="module_estate_property">
+        <field name='name'>Category</field>
+        <field name="description">Category for estaate property</field>
+        <field name="sequence">16</field>
+    </record>
+
+    <!-- this way we can create group -->
+	<record id="custom_property_manager" model="res.groups">
+        <field name="name">Property Manager</field>
+        <field name="category_id" ref="module_estate_property"/>
+    </record>
+
+    <record id="custom_property_user" model="res.groups">
+        <field name="name">Property User</field>
+        <field name="category_id" ref="module_estate_property"/>
+    </record>
+
+</odoo>
