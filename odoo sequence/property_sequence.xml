@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		
+		<record id="sequence_property_id" model="ir.sequence">
+			<field name="name">Property Order Sequance</field>
+			<field name="code">sequence_property_order</field>
+			<field name="prefix">Property/</field>
+			<field name="padding">4</field>
+			<field name="number_next">1</field>
+		</record>
+
+	</data>
+</odoo>
